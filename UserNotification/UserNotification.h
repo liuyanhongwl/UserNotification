@@ -30,8 +30,6 @@ MInterfaceSharedInstance(sharedNotification)
 
 - (void)addNotificationWithLocationTrigger;
 
-#pragma mark - Add Remote Notification
-
 #pragma mark - Categories
 
 - (void)setCategories;
@@ -42,6 +40,20 @@ MInterfaceSharedInstance(sharedNotification)
 
 - (void)addNotificationWithCategroy3;
 
+#pragma mark - Add Remote Notification
+
+- (void)addRemoteNotification;
+
+- (void)addRemoteNotificationDownload;
+
+- (void)addRemoteNotificationSilentDownload;
+
+- (void)addRemoteNotificationCategory1;
+
+- (void)addRemoteNotificationCategory2;
+
+- (void)addRemoteNotificationCategory3;
+
 #pragma mark - 附件
 
 - (void)addNotificationWithAttachmentType:(AttachmentType)type;
@@ -51,5 +63,7 @@ MInterfaceSharedInstance(sharedNotification)
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
 
 @end

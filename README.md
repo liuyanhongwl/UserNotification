@@ -1,6 +1,12 @@
-- 本地推送
+- 本地推送 
+- 操作策略（Category+Action）
 - 远程推送
-- 操作策略
-- 附件样式
+- 附件样式 
 
-注意： 远程推送暂时还未集成进来。马上会有更新。
+可使用[NWPusher](https://github.com/noodlewerk/NWPusher)与本Demo联调, 发送任意格式的远程通知，只需要导入推送证书的p12文件即可。
+
+详细解析请看[iOS10推送通知](https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md)
+
+
+
+

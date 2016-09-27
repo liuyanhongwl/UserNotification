@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "UserNotification.h"
+#import "DownloadManager.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
 @property (nonatomic, copy) NSArray *sectionTitles;
 @property (nonatomic, copy) NSArray *datas;
 
@@ -23,10 +25,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    __weak typeof(self) weakSelf = self;
+    [[DownloadManager sharedInstance] setProgressBlock:^(float persent) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.progress.progress = persent;
+        });
+    }];
+    
     self.sectionTitles = @[
                            @"Local Notification",
-                           @"Remote Notification",
                            @"Category",
+                           @"Remote Notification",
                            @"附件"
                            ];
     
@@ -37,13 +46,15 @@
                        @"指定位置推送"
                        ],
                    @[
-                       
-                       ],
-                   @[
                        @"设置categories",
                        @"推送category样式一",
                        @"推送category样式二",
                        @"推送category样式三带文本输入"
+                       ],
+                   @[
+                       @"远程推送-普通",
+                       @"远程推送-普通下载",
+                       @"远程推送-静默下载"
                        ],
                    @[
                        @"附件-图片",
@@ -53,6 +64,36 @@
                        ]
                    ];
     
+    self.navigationItem.rightBarButtonItems = @[
+                                                [[UIBarButtonItem alloc] initWithTitle:@"崩" style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonAction:)],
+                                                [[UIBarButtonItem alloc] initWithTitle:@"stop" style:UIBarButtonItemStylePlain target:self action:@selector(stopAction:)],
+                                                [[UIBarButtonItem alloc] initWithTitle:@"pause" style:UIBarButtonItemStylePlain target:self action:@selector(pauseAction:)],
+                                                [[UIBarButtonItem alloc] initWithTitle:@"start" style:UIBarButtonItemStylePlain target:self action:@selector(startAction:)]
+                                                ];
+    
+}
+
+#pragma mark - Action
+
+- (void)stopAction:(UIBarButtonItem *)item
+{
+    [[DownloadManager sharedInstance] stop];
+}
+
+- (void)pauseAction:(UIBarButtonItem *)item
+{
+    [[DownloadManager sharedInstance] pause];
+}
+
+- (void)startAction:(UIBarButtonItem *)item
+{
+    [[DownloadManager sharedInstance] start];
+}
+
+- (void)rightBarButtonAction:(UIBarButtonItem *)item
+{
+    NSArray *a = @[];
+    [a objectAtIndex:1];
 }
 
 #pragma mark - Delegate
@@ -110,8 +151,6 @@
         
     }else if (indexPath.section == 1){
         
-    }else if (indexPath.section == 2){
-
         switch (indexPath.row) {
             case 0:
             {
@@ -133,6 +172,29 @@
                 [[UserNotification sharedNotification] addNotificationWithCategroy3];
             }
                 break;
+            default:
+                break;
+        }
+        
+    }else if (indexPath.section == 2){
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                
+            }
+                break;
+            case 1:
+            {
+                
+            }
+                break;
+            case 2:
+            {
+                
+            }
+                break;
+                
             default:
                 break;
         }

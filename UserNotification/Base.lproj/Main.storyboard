@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PSc-zq-Wgn" id="jPW-EQ-XSL">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -35,17 +35,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="z1y-Yw-VCc"/>
                                 </connections>
                             </tableView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D9v-G3-U2B">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="w56-XO-KPn"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Glf-tG-wey" secondAttribute="bottom" id="EzA-H9-QHm"/>
+                            <constraint firstItem="D9v-G3-U2B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="M0X-1E-IYv"/>
+                            <constraint firstAttribute="trailing" secondItem="D9v-G3-U2B" secondAttribute="trailing" id="ZWB-Du-jvT"/>
                             <constraint firstItem="Glf-tG-wey" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="egJ-dp-hgK"/>
                             <constraint firstAttribute="trailing" secondItem="Glf-tG-wey" secondAttribute="trailing" id="hIx-mD-TiW"/>
                             <constraint firstItem="Glf-tG-wey" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jdU-1f-9LI"/>
+                            <constraint firstItem="D9v-G3-U2B" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="jfi-hT-W1M"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kTa-kd-rpT"/>
                     <connections>
+                        <outlet property="progress" destination="D9v-G3-U2B" id="pRz-Gm-RiZ"/>
                         <outlet property="tableView" destination="Glf-tG-wey" id="q2N-Lf-zxu"/>
                     </connections>
                 </viewController>

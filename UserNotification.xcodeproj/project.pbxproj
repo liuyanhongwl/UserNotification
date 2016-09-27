@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10A6F9F1D954C1D00D1A465 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F10A6F9E1D954C1D00D1A465 /* DownloadManager.m */; };
+		F140000F1D9A4E0A007A421E /* ResumeDataTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140000E1D9A4E0A007A421E /* ResumeDataTools.swift */; };
 		F1D0B0B81D924410001D9A38 /* test.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1D0B0B71D924410001D9A38 /* test.caf */; };
 		F1E08BBC1D93969F00D546CC /* hong.png in Resources */ = {isa = PBXBuildFile; fileRef = F1E08BBB1D93969F00D546CC /* hong.png */; };
 		F1E08BC01D939E1F00D546CC /* 周笔畅-对嘴.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F1E08BBF1D939E1F00D546CC /* 周笔畅-对嘴.m4a */; };
@@ -42,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10A6F9D1D954C1D00D1A465 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		F10A6F9E1D954C1D00D1A465 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		F140000D1D9A4E09007A421E /* UserNotification-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UserNotification-Bridging-Header.h"; sourceTree = "<group>"; };
+		F140000E1D9A4E0A007A421E /* ResumeDataTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeDataTools.swift; sourceTree = "<group>"; };
 		F1D0B0B51D923430001D9A38 /* UserNotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UserNotification.entitlements; sourceTree = "<group>"; };
 		F1D0B0B71D924410001D9A38 /* test.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.caf; sourceTree = "<group>"; };
 		F1E08BBB1D93969F00D546CC /* hong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hong.png; sourceTree = "<group>"; };
@@ -139,12 +145,16 @@
 				F1E9B0191D9155680034138D /* ViewController.m */,
 				F1E9B0451D915EDD0034138D /* UserNotification.h */,
 				F1E9B0461D915EDD0034138D /* UserNotification.m */,
+				F10A6F9D1D954C1D00D1A465 /* DownloadManager.h */,
+				F10A6F9E1D954C1D00D1A465 /* DownloadManager.m */,
+				F140000E1D9A4E0A007A421E /* ResumeDataTools.swift */,
 				F1E9B04B1D915FCD0034138D /* Macro.h */,
 				F1E9B01B1D9155680034138D /* Main.storyboard */,
 				F1E9B01E1D9155680034138D /* Assets.xcassets */,
 				F1E9B0201D9155680034138D /* LaunchScreen.storyboard */,
 				F1E9B0231D9155680034138D /* Info.plist */,
 				F1E9B0121D9155680034138D /* Supporting Files */,
+				F140000D1D9A4E09007A421E /* UserNotification-Bridging-Header.h */,
 			);
 			path = UserNotification;
 			sourceTree = "<group>";
@@ -242,8 +252,12 @@
 				TargetAttributes = {
 					F1E9B00E1D9155680034138D = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -322,6 +336,8 @@
 				F1E9B01A1D9155680034138D /* ViewController.m in Sources */,
 				F1E9B0171D9155680034138D /* AppDelegate.m in Sources */,
 				F1E9B0141D9155680034138D /* main.m in Sources */,
+				F10A6F9F1D954C1D00D1A465 /* DownloadManager.m in Sources */,
+				F140000F1D9A4E0A007A421E /* ResumeDataTools.swift in Sources */,
 				F1E9B0471D915EDD0034138D /* UserNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UserNotification/UserNotification.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Penghui Wu (WX9Y834Z85)";
 				DEVELOPMENT_TEAM = "";
@@ -480,6 +497,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sube.baidupush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "baidupush-developer";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserNotification/UserNotification-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -487,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UserNotification/UserNotification.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: DAILY CAST HK LIMITED (84X7D98WYH)";
 				DEVELOPMENT_TEAM = "";
@@ -496,12 +517,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sube.baidupush;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "BaiduPush-Production";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserNotification/UserNotification-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		F1E9B0401D9155680034138D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = UserNotificationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -514,6 +538,7 @@
 		F1E9B0411D9155680034138D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = UserNotificationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -526,6 +551,7 @@
 		F1E9B0431D9155680034138D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = UserNotificationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wlnana17.UserNotificationUITests;
@@ -537,6 +563,7 @@
 		F1E9B0441D9155680034138D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = UserNotificationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wlnana17.UserNotificationUITests;

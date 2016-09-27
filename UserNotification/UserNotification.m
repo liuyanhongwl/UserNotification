@@ -10,11 +10,37 @@
 #import <UserNotifications/UserNotifications.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
+#import "DownloadManager.h"
 
 /*
  后台或者无进程时收到本地通知的回调。
  后台或者无进程时收到本地通知后操作Action的回调。
- 附件：有大小、格式限制，而且要在本地。
+ 
+ 附件通知（图片、音频、视频）:有大小、格式限制，而且附件要在本地。
+    本地：content.attachments = @[attachment];
+    远程：apns中包含一个"mutable-content":1字段,使用UNNotificationServiceExtension，你有30秒的时间处理这个通知，可以同步下载图像和视频到本地，然后包装为一个UNNotificationAttachment扔给通知，这样就能展示用服务器获取的图像或者视频了。这里需要注意：如果数据处理失败，超时，extension会报一个崩溃信息，但是通知会用默认的形式展示出来，app不会崩溃。
+ 
+ 管理推送周期
+    本地：通过id更新request。
+        1. addNotificationRequest:withCompletionHandler: 在 id 不变的情况下重新添加，就可以刷新原有的推送。
+        2. 删除计划的推送 [center removePendingNotificationRequestsWithIdentifiers:@[requestIdentifier]];
+    远程：通过新的字段 apns-collapse-id
+    此外 UNUserNotificationCenter.h 中还有诸如删除所有推送、查看已经发出的推送、删除已经发出的推送等等强大的接口
+ 
+ 收到通知的回调：
+    本地推送：
+        1. 用户不在前台时，未知。
+        2. 用户在前台，（userNotificationCenter:willPresentNotification:withCompletionHandler）
+    远程推送：
+        1. 被用户手动划掉的用户不能收到远程推送的回调。
+        2. 在后台的应用要想收到远程推送的回调，需要增加"content-available":1字段。(application:didReceiveRemoteNotification:fetchCompletionHandler:)
+        3. 在前台，没有"content-available":1字段时，只调用（userNotificationCenter:willPresentNotification:withCompletionHandler）。有"content-available":1字段，则先调用(application:didReceiveRemoteNotification:fetchCompletionHandler),再调用(userNotificationCenter:willPresentNotification:withCompletionHandler)。
+ 操作的回调：
+    本地推送：
+        1. 被手动划掉的用户，可以收到本地推送操作的回调。(userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:) //并且想获取清除通知的回调，category需要配置UNNotificationCategoryOptionCustomDismissAction。
+    远程推送：
+        1. 与本地推送的操作回调相同。增加"category":"categoryId"字段
+
  */
 
 @interface UserNotification ()<UNUserNotificationCenterDelegate>
@@ -121,8 +147,6 @@ MImplementeSharedInstance(sharedNotification)
     }];
 }
 
-#pragma mark - Add Remote Notification
-
 #pragma mark - Categories
 
 - (void)setCategories
@@ -173,6 +197,85 @@ MImplementeSharedInstance(sharedNotification)
     
     [self addDelayNotificationWithContent:content];
 }
+
+#pragma mark - Add Remote Notification
+
+- (void)addRemoteNotification
+{
+    //ios10新版文案多样推送
+    /*
+     {
+     "aps":{
+         "alert":{
+                "title":"Testing.. (52)",
+                "subtitle":"subtitle",
+                "body":"body"},
+         "badge":1,
+         "sound":"default"}
+     }
+     */
+}
+
+- (void)addRemoteNotificationDownload
+{
+    //后台做一些操作增加字段："content-available":1
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+            "badge":1,
+            "sound":"default",
+            "content-available":1}
+     }
+     */
+}
+
+- (void)addRemoteNotificationSilentDownload
+{
+    //去掉alert、badge、sound字段实现静默推送，增加增加字段："content-available":1，也可以在后台做一些事情。
+    /*
+     {
+     "aps":{"content-available":1}
+     }
+     */
+}
+
+- (void)addRemoteNotificationCategory1
+{
+    //指定操作策略，需增加字段："category":"categoryId"
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "category":"category1"}
+     }
+     */
+}
+
+- (void)addRemoteNotificationCategory2
+{
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "category":"category2"}
+     }
+     */
+}
+
+- (void)addRemoteNotificationCategory3
+{
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "category":"category3"}
+     }
+     */
+}
+
 
 #pragma mark - 附件
 
@@ -273,6 +376,17 @@ MImplementeSharedInstance(sharedNotification)
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"注册通知失败");
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+    NSLog(@"didReceiveRemoteNotification---application.state=%ld", application.applicationState);
+    
+    [[DownloadManager sharedInstance] setCompletionBlock:^(BOOL finish, BOOL stop) {
+        NSLog(@"completionblock");
+        completionHandler(UIBackgroundFetchResultNewData);
+    }];
+    [[DownloadManager sharedInstance] start];
 }
 
 @end

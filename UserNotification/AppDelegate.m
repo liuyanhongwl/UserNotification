@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UserNotification.h"
+#import "DownloadManager.h"
 
 @interface AppDelegate ()
 
@@ -15,9 +16,23 @@
 
 @implementation AppDelegate
 
+void UncaughtExceptionHandler(NSException *exception)
+{
+    NSArray *arr = [exception callStackSymbols];//得到当前调用栈信息
+    NSString *reason = [exception reason];//崩溃的原因
+    NSString *name = [exception name];//异常类型
+    
+    NSLog(@"exception type : %@ \n crash reason : %@ \n call stack info : %@", name, reason, arr);
+    
+    //当设置成background session,在程序崩溃、退出已让会继续下载，所以不用存resume data.
+//    [[DownloadManager sharedInstance] stop];
+//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     
     [[UserNotification sharedNotification] registerNotification];
     
@@ -34,6 +49,11 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     [[UserNotification sharedNotification] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
+{
+    [[UserNotification sharedNotification] application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -60,6 +80,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    NSLog(@"applicationWillTerminate");
+    
+    //当设置成background session,在程序崩溃、退出已让会继续下载，所以不用存resume data.
+//    [[DownloadManager sharedInstance] stop];
+//    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
 }
 
 
