@@ -22,7 +22,7 @@ MInterfaceSharedInstance(sharedNotification)
 
 - (void)registerNotification;
 
-#pragma mark - Add Local Notification
+#pragma mark - 添加 本地推送
 
 - (void)addNotificationWithTimeIntervalTrigger;
 
@@ -40,7 +40,11 @@ MInterfaceSharedInstance(sharedNotification)
 
 - (void)addNotificationWithCategroy3;
 
-#pragma mark - Add Remote Notification
+#pragma mark - 本地-附件
+
+- (void)addNotificationWithAttachmentType:(AttachmentType)type;
+
+#pragma mark - 添加 远程推送
 
 - (void)addRemoteNotification;
 
@@ -48,15 +52,19 @@ MInterfaceSharedInstance(sharedNotification)
 
 - (void)addRemoteNotificationSilentDownload;
 
-- (void)addRemoteNotificationCategory1;
+- (void)addRemoteNotificationCategory;
 
-- (void)addRemoteNotificationCategory2;
+#pragma mark - 远程-附件
 
-- (void)addRemoteNotificationCategory3;
+- (void)addRemoteNotificationAttachment;
 
-#pragma mark - 附件
+#pragma mark - 自定义推送UI
 
-- (void)addNotificationWithAttachmentType:(AttachmentType)type;
+- (void)addLocalWithCustomUI;
+
+- (void)addRemoteWithCustomUI;
+
+- (void)addCustomUICategory;
 
 #pragma mark - AppDelegate
 

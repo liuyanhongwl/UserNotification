@@ -33,10 +33,12 @@
     }];
     
     self.sectionTitles = @[
-                           @"Local Notification",
-                           @"Category",
-                           @"Remote Notification",
-                           @"附件"
+                           @"本地三种推送",
+                           @"本地-Category",
+                           @"本地-附件",
+                           @"远程推送",
+                           @"远程-附件",
+                           @"自定义推送UI"
                            ];
     
     self.datas = @[
@@ -52,15 +54,23 @@
                        @"推送category样式三带文本输入"
                        ],
                    @[
+                       @"附件-图片",
+                       @"附件-图片-GIF",
+                       @"附件-音频",
+                       @"附件-视频"
+                       ],
+                   @[
                        @"远程推送-普通",
                        @"远程推送-普通下载",
                        @"远程推送-静默下载"
                        ],
                    @[
-                       @"附件-图片",
-                       @"附件-图片-GIF",
-                       @"附件-音频",
-                       @"附件-视频"
+                       @"远程-附件"
+                       ],
+                   @[
+                       @"自定义-本地",
+                       @"自定义-远程",
+                       @"自定义-添加策略行为"
                        ]
                    ];
     
@@ -128,7 +138,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-        
+        //本地三种推送
         switch (indexPath.row) {
             case 0:
             {
@@ -150,7 +160,7 @@
         }
         
     }else if (indexPath.section == 1){
-        
+        //本地-Category
         switch (indexPath.row) {
             case 0:
             {
@@ -177,30 +187,7 @@
         }
         
     }else if (indexPath.section == 2){
-        
-        switch (indexPath.row) {
-            case 0:
-            {
-                
-            }
-                break;
-            case 1:
-            {
-                
-            }
-                break;
-            case 2:
-            {
-                
-            }
-                break;
-                
-            default:
-                break;
-        }
-        
-    }else{
-        
+        //本地-附件
         switch (indexPath.row) {
             case 0:
             {
@@ -226,6 +213,68 @@
                 break;
         }
         
+    }else if (indexPath.section == 3){
+        //远程推送
+        
+        //远程推送，这里的方法没有具体实现，只是在方法内部注释了远程推送的apns格式。
+        switch (indexPath.row) {
+            case 0:
+            {
+                [[UserNotification sharedNotification] addRemoteNotification];
+            }
+                break;
+            case 1:
+            {
+                [[UserNotification sharedNotification] addRemoteNotificationDownload];
+            }
+                break;
+            case 2:
+            {
+                [[UserNotification sharedNotification] addRemoteNotificationSilentDownload];
+            }
+                break;
+            case 3:
+            {
+                [[UserNotification sharedNotification] addRemoteNotificationCategory];
+            }
+                
+            default:
+                break;
+        }
+    }else if (indexPath.section == 4){
+        //远程-附件
+        switch (indexPath.row) {
+            case 0:
+            {
+                [[UserNotification sharedNotification] addRemoteNotificationAttachment];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }else if (indexPath.section == 5){
+        //自定义推送UI
+        switch (indexPath.row) {
+            case 0:
+            {
+                [[UserNotification sharedNotification] addLocalWithCustomUI];
+            }
+                break;
+            case 1:
+            {
+                [[UserNotification sharedNotification] addRemoteWithCustomUI];
+            }
+                break;
+            case 2:
+            {
+                [[UserNotification sharedNotification] addCustomUICategory];
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 

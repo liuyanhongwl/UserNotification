@@ -4,6 +4,21 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ContentExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Resource.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>ServiceExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>UserNotification.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +27,26 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F134EC721DACE9C200CD6ABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F134EC8C1DAD0E5A00CD6ABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F134EC941DAD0E5A00CD6ABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F1B925C61D9E630900980B50</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F1E9B00E1D9155680034138D</key>
 		<dict>
 			<key>primary</key>

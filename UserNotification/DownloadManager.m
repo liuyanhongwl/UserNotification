@@ -46,6 +46,8 @@ MImplementeSharedInstance(sharedInstance)
         [self.task resume];
     }
     
+    NSLog(@"xxxxstart : %@", [self localPath]);
+    
     NSLog(@"start");
 }
 

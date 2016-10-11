@@ -36,6 +36,8 @@ void UncaughtExceptionHandler(NSException *exception)
     
     [[UserNotification sharedNotification] registerNotification];
     
+    NSLog(@"sandbox app : %@", NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject);
+    
     return YES;
 }
 

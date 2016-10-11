@@ -13,9 +13,6 @@
 #import "DownloadManager.h"
 
 /*
- 后台或者无进程时收到本地通知的回调。
- 后台或者无进程时收到本地通知后操作Action的回调。
- 
  附件通知（图片、音频、视频）:有大小、格式限制，而且附件要在本地。
     本地：content.attachments = @[attachment];
     远程：apns中包含一个"mutable-content":1字段,使用UNNotificationServiceExtension，你有30秒的时间处理这个通知，可以同步下载图像和视频到本地，然后包装为一个UNNotificationAttachment扔给通知，这样就能展示用服务器获取的图像或者视频了。这里需要注意：如果数据处理失败，超时，extension会报一个崩溃信息，但是通知会用默认的形式展示出来，app不会崩溃。
@@ -81,7 +78,7 @@ MImplementeSharedInstance(sharedNotification)
     }];
 }
 
-#pragma mark - Add Local Notification
+#pragma mark - 添加 本地推送
 
 - (void)addNotificationWithTimeIntervalTrigger
 {
@@ -133,10 +130,10 @@ MImplementeSharedInstance(sharedNotification)
     content.sound = [UNNotificationSound defaultSound];
     
     /*重点开始*/
-    CLLocationCoordinate2D cen = CLLocationCoordinate2DMake(39.990465,116.333386);
+    CLLocationCoordinate2D cen = CLLocationCoordinate2DMake(39.989898,116.333404);
     CLRegion *region = [[CLCircularRegion alloc] initWithCenter:cen radius:100 identifier:@"center"];
-    region.notifyOnEntry = YES;
-    region.notifyOnExit = NO;
+    region.notifyOnEntry = NO;
+    region.notifyOnExit = YES;
     UNLocationNotificationTrigger *trigger = [UNLocationNotificationTrigger triggerWithRegion:region repeats:YES];
     /*重点结束*/
     
@@ -198,86 +195,7 @@ MImplementeSharedInstance(sharedNotification)
     [self addDelayNotificationWithContent:content];
 }
 
-#pragma mark - Add Remote Notification
-
-- (void)addRemoteNotification
-{
-    //ios10新版文案多样推送
-    /*
-     {
-     "aps":{
-         "alert":{
-                "title":"Testing.. (52)",
-                "subtitle":"subtitle",
-                "body":"body"},
-         "badge":1,
-         "sound":"default"}
-     }
-     */
-}
-
-- (void)addRemoteNotificationDownload
-{
-    //后台做一些操作增加字段："content-available":1
-    /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-            "badge":1,
-            "sound":"default",
-            "content-available":1}
-     }
-     */
-}
-
-- (void)addRemoteNotificationSilentDownload
-{
-    //去掉alert、badge、sound字段实现静默推送，增加增加字段："content-available":1，也可以在后台做一些事情。
-    /*
-     {
-     "aps":{"content-available":1}
-     }
-     */
-}
-
-- (void)addRemoteNotificationCategory1
-{
-    //指定操作策略，需增加字段："category":"categoryId"
-    /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "category":"category1"}
-     }
-     */
-}
-
-- (void)addRemoteNotificationCategory2
-{
-    /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "category":"category2"}
-     }
-     */
-}
-
-- (void)addRemoteNotificationCategory3
-{
-    /*
-     {
-     "aps":{"alert":"Testing.. (34)",
-     "badge":1,
-     "sound":"default",
-     "category":"category3"}
-     }
-     */
-}
-
-
-#pragma mark - 附件
+#pragma mark - 本地-附件
 
 - (void)addNotificationWithAttachmentType:(AttachmentType)type
 {
@@ -325,6 +243,123 @@ MImplementeSharedInstance(sharedNotification)
     [self addDelayNotificationWithContent:content];
 }
 
+#pragma mark - 添加 远程推送
+
+- (void)addRemoteNotification
+{
+    //ios10新版文案多样推送
+    /*
+     {
+     "aps":{
+         "alert":{
+                "title":"Testing.. (52)",
+                "subtitle":"subtitle",
+                "body":"body"},
+         "badge":1,
+         "sound":"default"}
+     }
+     */
+}
+
+- (void)addRemoteNotificationDownload
+{
+    //后台做一些操作增加字段："content-available":1
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+            "badge":1,
+            "sound":"default",
+            "content-available":1}
+     }
+     */
+}
+
+- (void)addRemoteNotificationSilentDownload
+{
+    //去掉alert、badge、sound字段实现静默推送，增加增加字段："content-available":1，也可以在后台做一些事情。
+    /*
+     {
+     "aps":{"content-available":1}
+     }
+     */
+}
+
+- (void)addRemoteNotificationCategory
+{
+    //指定操作策略，需增加字段："category":"categoryId"
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "category":"category1"}
+     }
+     */
+}
+
+#pragma mark - 远程-附件
+
+- (void)addRemoteNotificationAttachment
+{
+    //为了给远程推送增加附件，使推送是可变的，需增加字段："mutable-content":1
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "mutable-content":1}
+     }
+     */
+}
+
+#pragma mark - 自定义推送UI
+
+- (void)addLocalWithCustomUI
+{
+    //只要指定categoryIdentifier是Notification Content Extension（通知内容扩展）里配置文件里面category的id之一，就可以调用扩展的通知样式。
+    UNMutableNotificationContent *content = [self contentWithSubtitle:@"category样式一"];
+    /*重点开始*/
+    content.categoryIdentifier = @"category-custom-ui";
+    /*重点结束*/
+    
+    //添加附件
+    NSError *error = nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hong" ofType:@"png"];
+    UNNotificationAttachment *attachment = [UNNotificationAttachment attachmentWithIdentifier:@"atta1" URL:[NSURL fileURLWithPath:path] options:nil error:&error];
+    if (error) {
+        NSLog(@"attachment error : %@", error);
+    }
+    if (attachment) {
+        content.attachments = @[attachment];
+    }
+    
+    [self addDelayNotificationWithContent:content];
+}
+
+- (void)addRemoteWithCustomUI
+{
+    //指定操作策略是Notification Content Extension（通知内容扩展）里配置文件里面category的id之一
+    /*
+     {
+     "aps":{"alert":"Testing.. (34)",
+     "badge":1,
+     "sound":"default",
+     "category":"category-custom-ui"}
+     }
+     */
+}
+
+- (void)addCustomUICategory
+{
+    UNNotificationAction *likeAction = [UNNotificationAction actionWithIdentifier:@"action-like" title:@"赞" options:UNNotificationActionOptionAuthenticationRequired];
+    UNNotificationAction *collectAction = [UNNotificationAction actionWithIdentifier:@"action-collect" title:@"收藏" options:UNNotificationActionOptionAuthenticationRequired];
+    UNTextInputNotificationAction *commentAction = [UNTextInputNotificationAction actionWithIdentifier:@"action-comment" title:@"评论" options:UNNotificationActionOptionDestructive textInputButtonTitle:@"发送" textInputPlaceholder:@"输入你的评论"];
+    
+    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:@"category-custom-ui" actions:@[likeAction, collectAction, commentAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];
+}
+
 #pragma mark - 获取通知状态
 
 
@@ -368,7 +403,7 @@ MImplementeSharedInstance(sharedNotification)
 
 #pragma mark - AppDelegate
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+- (void)application:(UIApplication *)ap·plication didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"注册通知成功 device token : %@", deviceToken);
 }
