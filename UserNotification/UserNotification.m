@@ -317,7 +317,7 @@ MImplementeSharedInstance(sharedNotification)
 - (void)addLocalWithCustomUI
 {
     //只要指定categoryIdentifier是Notification Content Extension（通知内容扩展）里配置文件里面category的id之一，就可以调用扩展的通知样式。
-    UNMutableNotificationContent *content = [self contentWithSubtitle:@"category样式一"];
+    UNMutableNotificationContent *content = [self contentWithSubtitle:@"Notification Content Extension"];
     /*重点开始*/
     content.categoryIdentifier = @"category-custom-ui";
     /*重点结束*/

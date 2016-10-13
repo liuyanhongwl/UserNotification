@@ -14,11 +14,11 @@
 		F134EC7F1DACE9C200CD6ABE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F134EC7D1DACE9C200CD6ABE /* MainInterface.storyboard */; };
 		F134EC831DACE9C200CD6ABE /* ContentExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F134EC731DACE9C200CD6ABE /* ContentExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F134EC9D1DAD0E5A00CD6ABE /* ResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F134EC9C1DAD0E5A00CD6ABE /* ResourceTests.m */; };
-		F134ECB31DAD12A100CD6ABE /* hong.png in Resources */ = {isa = PBXBuildFile; fileRef = F134ECB21DAD12A100CD6ABE /* hong.png */; };
-		F134ECB51DAD1B6500CD6ABE /* like.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F134ECB41DAD1B6500CD6ABE /* like.m4a */; };
 		F140000F1D9A4E0A007A421E /* ResumeDataTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140000E1D9A4E0A007A421E /* ResumeDataTools.swift */; };
 		F1B925CB1D9E630900980B50 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B925CA1D9E630900980B50 /* NotificationService.m */; };
 		F1B925CF1D9E630900980B50 /* ServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1B925C71D9E630900980B50 /* ServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F1CACDD71DAF3E43008AF1CB /* hong.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CACDD61DAF3E43008AF1CB /* hong.png */; };
+		F1CACDD91DAF3E87008AF1CB /* hong.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CACDD81DAF3E87008AF1CB /* hong.png */; };
 		F1D0B0B81D924410001D9A38 /* test.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1D0B0B71D924410001D9A38 /* test.caf */; };
 		F1E08BC01D939E1F00D546CC /* 周笔畅-对嘴.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F1E08BBF1D939E1F00D546CC /* 周笔畅-对嘴.m4a */; };
 		F1E08BC41D93A24C00D546CC /* 赵薇-烟雨蒙蒙.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1E08BC31D93A24C00D546CC /* 赵薇-烟雨蒙蒙.mp3 */; };
@@ -111,14 +111,15 @@
 		F134EC951DAD0E5A00CD6ABE /* ResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F134EC9C1DAD0E5A00CD6ABE /* ResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResourceTests.m; sourceTree = "<group>"; };
 		F134EC9E1DAD0E5A00CD6ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F134ECB21DAD12A100CD6ABE /* hong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hong.png; sourceTree = "<group>"; };
-		F134ECB41DAD1B6500CD6ABE /* like.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4a; sourceTree = "<group>"; };
 		F140000D1D9A4E09007A421E /* UserNotification-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UserNotification-Bridging-Header.h"; sourceTree = "<group>"; };
 		F140000E1D9A4E0A007A421E /* ResumeDataTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeDataTools.swift; sourceTree = "<group>"; };
 		F1B925C71D9E630900980B50 /* ServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B925C91D9E630900980B50 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		F1B925CA1D9E630900980B50 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		F1B925CC1D9E630900980B50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1CACDD51DAF390E008AF1CB /* like.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.m4a; sourceTree = "<group>"; };
+		F1CACDD61DAF3E43008AF1CB /* hong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hong.png; sourceTree = "<group>"; };
+		F1CACDD81DAF3E87008AF1CB /* hong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hong.png; sourceTree = "<group>"; };
 		F1D0B0B51D923430001D9A38 /* UserNotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UserNotification.entitlements; sourceTree = "<group>"; };
 		F1D0B0B71D924410001D9A38 /* test.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.caf; sourceTree = "<group>"; };
 		F1E08BBF1D939E1F00D546CC /* 周笔畅-对嘴.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "周笔畅-对嘴.m4a"; sourceTree = "<group>"; };
@@ -206,7 +207,8 @@
 		F134EC791DACE9C200CD6ABE /* ContentExtension */ = {
 			isa = PBXGroup;
 			children = (
-				F134ECB41DAD1B6500CD6ABE /* like.m4a */,
+				F1CACDD81DAF3E87008AF1CB /* hong.png */,
+				F1CACDD51DAF390E008AF1CB /* like.m4a */,
 				F134EC7A1DACE9C200CD6ABE /* NotificationViewController.h */,
 				F134EC7B1DACE9C200CD6ABE /* NotificationViewController.m */,
 				F134EC7D1DACE9C200CD6ABE /* MainInterface.storyboard */,
@@ -237,7 +239,7 @@
 		F1D0B0B61D924410001D9A38 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F134ECB21DAD12A100CD6ABE /* hong.png */,
+				F1CACDD61DAF3E43008AF1CB /* hong.png */,
 				F1E08BCB1D93F86900D546CC /* 超人.gif */,
 				F1E08BC71D93F6DC00D546CC /* IMG_0723.mp4 */,
 				F1E08BC31D93A24C00D546CC /* 赵薇-烟雨蒙蒙.mp3 */,
@@ -516,7 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F134EC7F1DACE9C200CD6ABE /* MainInterface.storyboard in Resources */,
-				F134ECB51DAD1B6500CD6ABE /* like.m4a in Resources */,
+				F1CACDD91DAF3E87008AF1CB /* hong.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,8 +541,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1E08BCC1D93F86900D546CC /* 超人.gif in Resources */,
+				F1CACDD71DAF3E43008AF1CB /* hong.png in Resources */,
 				F1D0B0B81D924410001D9A38 /* test.caf in Resources */,
-				F134ECB31DAD12A100CD6ABE /* hong.png in Resources */,
 				F1E08BC01D939E1F00D546CC /* 周笔畅-对嘴.m4a in Resources */,
 				F1E08BC81D93F6DC00D546CC /* IMG_0723.mp4 in Resources */,
 				F1E08BC41D93A24C00D546CC /* 赵薇-烟雨蒙蒙.mp3 in Resources */,
@@ -954,6 +956,7 @@
 				F134EC851DACE9C200CD6ABE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F134ECA81DAD0E5A00CD6ABE /* Build configuration list for PBXNativeTarget "ResourceTests" */ = {
 			isa = XCConfigurationList;
@@ -962,6 +965,7 @@
 				F134ECAA1DAD0E5A00CD6ABE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1B925D21D9E630900980B50 /* Build configuration list for PBXNativeTarget "ServiceExtension" */ = {
 			isa = XCConfigurationList;

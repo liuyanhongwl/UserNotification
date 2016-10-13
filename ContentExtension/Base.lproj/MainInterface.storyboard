@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,20 +26,28 @@
                                     <constraint firstAttribute="width" secondItem="nDI-TF-wt3" secondAttribute="height" multiplier="5:4" id="drT-dR-jGh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfp-ai-V6l">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfp-ai-V6l">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n0a-4r-Htq">
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.45882353186607361" green="0.74901962280273438" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hfp-ai-V6l" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="2N7-ju-q97"/>
                             <constraint firstItem="nDI-TF-wt3" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="8" id="3RP-Q4-xGW"/>
+                            <constraint firstItem="n0a-4r-Htq" firstAttribute="leading" secondItem="nDI-TF-wt3" secondAttribute="trailing" constant="8" id="IYs-QY-zXn"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n0a-4r-Htq" secondAttribute="trailing" constant="8" id="JDL-lL-ggB"/>
+                            <constraint firstItem="hfp-ai-V6l" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="RBG-kk-qu2"/>
                             <constraint firstItem="hfp-ai-V6l" firstAttribute="leading" secondItem="nDI-TF-wt3" secondAttribute="trailing" constant="8" id="WZP-4A-x5m"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="nDI-TF-wt3" secondAttribute="bottom" constant="8" id="tdh-Px-ddh"/>
+                            <constraint firstItem="n0a-4r-Htq" firstAttribute="top" secondItem="hfp-ai-V6l" secondAttribute="bottom" constant="4" id="bl7-ui-uXm"/>
                             <constraint firstItem="nDI-TF-wt3" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" constant="8" id="wTk-bk-jmY"/>
-                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="hfp-ai-V6l" secondAttribute="trailing" constant="8" id="yjW-G2-yrv"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="nDI-TF-wt3" secondAttribute="bottom" constant="8" id="wxX-lh-cWl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hfp-ai-V6l" secondAttribute="trailing" constant="8" id="yjW-G2-yrv"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -52,6 +59,7 @@
                     <connections>
                         <outlet property="imageView" destination="nDI-TF-wt3" id="4hV-Yn-HOI"/>
                         <outlet property="label" destination="hfp-ai-V6l" id="Iwl-wk-JpL"/>
+                        <outlet property="subLabel" destination="n0a-4r-Htq" id="Hxp-fV-GQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
