@@ -9,6 +9,5 @@
 
 详细解析请看[iOS10推送通知](https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification.md)和[iOS10推送通知进阶(Notification Extension）](https://github.com/liuyanhongwl/ios_common/blob/master/files/ios10_usernotification_extension.md)
 
-
-
+关于调试 extension 时遇到的问题，可以看[这里的解决方法](https://github.com/liuyanhongwl/ios_common/blob/master/files/App-Extension-Tips.md)
 
